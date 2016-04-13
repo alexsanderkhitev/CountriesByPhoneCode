@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A685C9341CBE1B1E0082A023 /* AllCountriesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A685C9331CBE1B1E0082A023 /* AllCountriesTableViewController.swift */; };
+		A685C9361CBE1C470082A023 /* CountriesWithPhoneCodeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A685C9351CBE1C470082A023 /* CountriesWithPhoneCodeTableViewController.swift */; };
 		A6BA2E631CBD76F900C53686 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6BA2E621CBD76F900C53686 /* AppDelegate.swift */; };
 		A6BA2E681CBD76F900C53686 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6BA2E661CBD76F900C53686 /* Main.storyboard */; };
 		A6BA2E6B1CBD76F900C53686 /* CountriesByPhoneCode.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A6BA2E691CBD76F900C53686 /* CountriesByPhoneCode.xcdatamodeld */; };
@@ -16,6 +18,7 @@
 		A6BA2E861CBD76F900C53686 /* CountriesByPhoneCodeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6BA2E851CBD76F900C53686 /* CountriesByPhoneCodeUITests.swift */; };
 		A6BA2E941CBD771400C53686 /* CountryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6BA2E931CBD771400C53686 /* CountryTableViewController.swift */; };
 		A6BA2E961CBD780B00C53686 /* Countries.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6BA2E951CBD780B00C53686 /* Countries.swift */; };
+		A6D5FEF71CBE1EB000713945 /* CountriesByPhoneNumberTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D5FEF61CBE1EB000713945 /* CountriesByPhoneNumberTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +39,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A685C9331CBE1B1E0082A023 /* AllCountriesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllCountriesTableViewController.swift; sourceTree = "<group>"; };
+		A685C9351CBE1C470082A023 /* CountriesWithPhoneCodeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountriesWithPhoneCodeTableViewController.swift; sourceTree = "<group>"; };
 		A6BA2E5F1CBD76F900C53686 /* CountriesByPhoneCode.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CountriesByPhoneCode.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6BA2E621CBD76F900C53686 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A6BA2E671CBD76F900C53686 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -51,6 +56,7 @@
 		A6BA2E871CBD76F900C53686 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A6BA2E931CBD771400C53686 /* CountryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountryTableViewController.swift; sourceTree = "<group>"; };
 		A6BA2E951CBD780B00C53686 /* Countries.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Countries.swift; sourceTree = "<group>"; };
+		A6D5FEF61CBE1EB000713945 /* CountriesByPhoneNumberTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountriesByPhoneNumberTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,6 +157,9 @@
 			isa = PBXGroup;
 			children = (
 				A6BA2E931CBD771400C53686 /* CountryTableViewController.swift */,
+				A685C9331CBE1B1E0082A023 /* AllCountriesTableViewController.swift */,
+				A685C9351CBE1C470082A023 /* CountriesWithPhoneCodeTableViewController.swift */,
+				A6D5FEF61CBE1EB000713945 /* CountriesByPhoneNumberTableViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -298,6 +307,9 @@
 				A6BA2E6B1CBD76F900C53686 /* CountriesByPhoneCode.xcdatamodeld in Sources */,
 				A6BA2E961CBD780B00C53686 /* Countries.swift in Sources */,
 				A6BA2E941CBD771400C53686 /* CountryTableViewController.swift in Sources */,
+				A6D5FEF71CBE1EB000713945 /* CountriesByPhoneNumberTableViewController.swift in Sources */,
+				A685C9361CBE1C470082A023 /* CountriesWithPhoneCodeTableViewController.swift in Sources */,
+				A685C9341CBE1B1E0082A023 /* AllCountriesTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -524,6 +536,7 @@
 				A6BA2E8C1CBD76F900C53686 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A6BA2E8D1CBD76F900C53686 /* Build configuration list for PBXNativeTarget "CountriesByPhoneCodeTests" */ = {
 			isa = XCConfigurationList;
@@ -532,6 +545,7 @@
 				A6BA2E8F1CBD76F900C53686 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A6BA2E901CBD76F900C53686 /* Build configuration list for PBXNativeTarget "CountriesByPhoneCodeUITests" */ = {
 			isa = XCConfigurationList;
@@ -540,6 +554,7 @@
 				A6BA2E921CBD76F900C53686 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

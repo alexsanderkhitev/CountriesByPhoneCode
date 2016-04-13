@@ -28,7 +28,7 @@ public class Countries {
         return countries
     }
     
-    public static func getCountriesByFirstLetter() -> [(String, [Country])] {
+    public static func getCountriesByAlphabet() -> [(String, [Country])] {
         let countries = getAllCountries()
         var countryDictionary = [String : [Country]]()
         var countryFirstLetterArray = [String]()
@@ -75,7 +75,7 @@ public class Countries {
     
     public static func getCountriesByPhoneCode() -> [Country] {
         var countries = getCountriesWithPhoneCode()
-        countries.sortInPlace({$0.phoneExtension! < $1.phoneExtension})
+        countries.sortInPlace({$0.phoneExtension! < $1.phoneExtension!})
         return countries
     }
     

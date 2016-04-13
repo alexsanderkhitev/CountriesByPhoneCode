@@ -1,66 +1,55 @@
 //
-//  CountryChooseTableViewController.swift
+//  AllCountriesTableViewController.swift
 //  CountriesByPhoneCode
 //
-//  Created by Alexsander  on 4/10/16.
+//  Created by Alexsander  on 4/13/16.
 //  Copyright © 2016 Alexsander Khitev. All rights reserved.
 //
 
 import UIKit
 
-class CountriesByAlphabetTableViewController: UITableViewController, UISearchControllerDelegate, UISearchBarDelegate {
+class AllCountriesTableViewController: UITableViewController {
     
-    // MARK: - var and let
-    private var countries: [(String, [Country])] = []
-    // MARK: - lifecycle
-    
+    // MARK: - var and let 
+    private var countries: [Country] = []
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.definesPresentationContext = true
-        setCountry()
+        setCountries()
     }
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-    // MARK: - IBAction
-    
     // MARK: - functions
-    
-    private func setCountry() {
-        countries = Countries.getCountriesByAlphabet()
+    private func setCountries() {
+        countries = Countries.getAllCountries()
     }
-    
+
     // MARK: - Table view data source
-    
+
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1 ?? 0
+    }
+
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return countries.count ?? 0
     }
-    
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return Array(countries)[section].1.count ?? 0
-       
-    }
-    
-    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return Array(countries)[section].0
-    }
-    
+
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("CountryCell", forIndexPath: indexPath)
-        
+
         // Configure the cell...
-        let country = Array(countries)[indexPath.section].1[indexPath.row]
+        let country = countries[indexPath.row]
+        
         cell.textLabel!.text = country.name
         if country.phoneExtension != nil {
-            cell.detailTextLabel!.text = "+".stringByAppendingString(country.phoneExtension!)
-        } else {
-            cell.detailTextLabel?.text = nil
+            cell.detailTextLabel!.text = country.phoneExtension!
         }
 
-        
         return cell
     }
 }
