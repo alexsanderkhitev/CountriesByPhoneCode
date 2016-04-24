@@ -1,6 +1,6 @@
 //
-//  NewCountry.swift
-//  CountriesByPhoneCode
+//  Countries.swift
+//  SwiftChats
 //
 //  Created by Alexsander  on 4/10/16.
 //  Copyright © 2016 Alexsander Khitev. All rights reserved.
@@ -11,8 +11,15 @@ import Foundation
 public class Countries {
     
     // MARK: - var and let
+    private static let selectedCountryName = "selectedCountryName"
+    private static let selectedCountryPhoneExtension = "selectedCountryPhoneExtension"
+    private static let selectedCountryisMain = "selectedCountryisMain"
+    private static let selectedCountryCode = "selectedCountryCode"
+    private static let countryIsSelected = "countryIsSelected"
+    public static let isSelected = NSUserDefaults.standardUserDefaults().boolForKey("countryIsSelected")
     
     // MARK: - functions
+    
     public static func getAllCountries() -> [Country] {
         var countries = [Country]()
         NSLocale.ISOCountryCodes().forEach { (isoCode) in
@@ -75,7 +82,7 @@ public class Countries {
     
     public static func getCountriesByPhoneCode() -> [Country] {
         var countries = getCountriesWithPhoneCode()
-        countries.sortInPlace({$0.phoneExtension! < $1.phoneExtension!})
+        countries.sortInPlace({$0.phoneExtension! < $1.phoneExtension})
         return countries
     }
     
@@ -88,6 +95,76 @@ public class Countries {
             }
         }
         return returnedCountries
+    }
+    
+    
+    public static func getDeviceSelectedCountry() -> Country? {
+        var index = 0
+        var countryCode = ""
+        
+        NSLocale.currentLocale().localeIdentifier.characters.forEach { (character) in
+            index += 1
+            if index > 3 {
+                countryCode.append(character)
+            }
+        }
+        
+        guard let currentCountryName = NSLocale.currentLocale().displayNameForKey(NSLocaleCountryCode, value: countryCode) else { return nil }
+        
+        var currentCountry: Country!
+        getAllCountries().forEach { (country) in
+            if country.name == currentCountryName {
+                print(country.name, country.phoneExtension)
+                currentCountry = country
+            }
+        }
+        return currentCountry
+    }
+    
+    // MARK: - save and get country
+    
+    public static func saveSelectedCountry(country: Country) {
+        NSUserDefaults.standardUserDefaults().setObject(country.name, forKey: selectedCountryName)
+        if country.phoneExtension != nil {
+            NSUserDefaults.standardUserDefaults().setObject(country.phoneExtension!, forKey: "selectedCountryPhoneExtension")
+        }
+        if country.isMain != nil {
+            NSUserDefaults.standardUserDefaults().setBool(country.isMain!, forKey: selectedCountryisMain)
+        }
+        NSUserDefaults.standardUserDefaults().setObject(country.countryCode, forKey: selectedCountryCode)
+        NSUserDefaults.standardUserDefaults().setBool(true, forKey: countryIsSelected)
+        NSUserDefaults.standardUserDefaults().synchronize()
+    }
+    
+    public static func getSelectedCountry() -> Country?  {
+        let isSelected = NSUserDefaults.standardUserDefaults().boolForKey(countryIsSelected)
+        if isSelected {
+            let countryName = NSUserDefaults.standardUserDefaults().objectForKey(selectedCountryName) as! String
+            let countryCode = NSUserDefaults.standardUserDefaults().objectForKey(selectedCountryCode) as! String
+            
+            guard let phoneExtension = NSUserDefaults.standardUserDefaults().objectForKey(selectedCountryPhoneExtension) as? String else {
+                let country = Country(name: countryName, phoneExtension: nil, countryCode: countryCode, isMain: nil)
+                return country
+            }
+            guard let isMain = NSUserDefaults.standardUserDefaults().objectForKey(selectedCountryisMain) as? Bool else {
+                let country = Country(name: countryName, phoneExtension: nil, countryCode: countryCode, isMain: nil)
+                return country
+            }
+            let country = Country(name: countryName, phoneExtension: phoneExtension, countryCode: countryCode, isMain: isMain)
+            return country
+        } else {
+            return nil
+        }
+    }
+    
+    public static func getCountryByPhoneCode(countryCode: String) -> Country? {
+        var currentCountry: Country!
+        getCountriesWithPhoneCode().forEach { (country) in
+            if country.phoneExtension == countryCode && country.isMain == true {
+                currentCountry = country
+            }
+        }
+        return currentCountry
     }
 }
 
